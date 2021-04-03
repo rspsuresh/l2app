@@ -1,4 +1,5 @@
 <link href="<?php echo Yii::$app->request->baseUrl ?>/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+<title>LOCKER AUTHORIZATION</title>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">

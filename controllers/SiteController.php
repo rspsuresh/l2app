@@ -56,6 +56,9 @@ class SiteController extends Controller
         if(Yii::$app->request->isAjax && !empty($_POST)){
             $UserReturn=TblUser::loginCheck($_POST);
             return json_encode($UserReturn);
+        }else{
+            Yii::$app->getSession()->destroy();
+            Yii::$app->user->logout();
         }
         return $this->render('login');
     }

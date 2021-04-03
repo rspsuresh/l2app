@@ -1,3 +1,4 @@
+<title>Locker Page</title>
 <div class="container-fluid">
     <div class="block-header">
         <h2>Locker Status</h2>

@@ -1,3 +1,4 @@
+<title>User Create</title>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -78,11 +79,7 @@
                         <div class="col-md-6">
                         <select class="form-control" name="locker" id="licker">
                             <option value="">-- Please select --</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
+                            <option value="1">1</option>
                         </select>
                         </div>
                         <div class="col-md-6">

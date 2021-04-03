@@ -1,4 +1,5 @@
 <link href="<?php echo Yii::$app->request->baseUrl ?>/css/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+<title>Locker Management</title>
 <div class="container-fluid">
     <!-- Basic Examples -->
     <div class="row clearfix">

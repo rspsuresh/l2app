@@ -13,10 +13,18 @@ class LockerController extends \yii\web\Controller
 {
     public function beforeAction($action)
     {
+       // echo "<pre>";print_r(\Yii::$app->controller->action->id);die;
+        $adminAction=['lockerusers','create','changestatus','changestatus','lockertracker'];
+        $UserAction=['uploadcld','clres','upload','clouddelete','lockertracker'];
         if (!isset($_SESSION['username']) && !\Yii::$app->request->isAjax) {
             \Yii::$app->getResponse()->redirect(\Yii::$app->getUser()->loginUrl);
         }else{
-            return parent::beforeAction($action);
+            $listArr=$_SESSION['usertype']=="A"?$adminAction:$UserAction;
+            if(in_array(\Yii::$app->controller->action->id,$listArr)){
+                return parent::beforeAction($action);
+            }else{
+                \Yii::$app->getResponse()->redirect(\Yii::$app->getUser()->loginUrl);
+            }
         }
     }
     public function actionIndex()
@@ -149,7 +157,6 @@ class LockerController extends \yii\web\Controller
            }
            if(isset($_FILES)){
                $target_dir = "assets/uploads/";
-
                $newfilename=round(microtime(true)) . '.' . basename($_FILES["profile"]["name"]);
                $target_file = $target_dir . $newfilename;
                move_uploaded_file($_FILES["profile"]["tmp_name"], $target_file);
@@ -163,7 +170,6 @@ class LockerController extends \yii\web\Controller
            return  $returnArr;
        }
    }
-
    public function actionChangestatus(){
        $filterId=base64_decode($_GET['id']);
        $UserModel=TblUser::findOne($filterId);
@@ -175,7 +181,6 @@ class LockerController extends \yii\web\Controller
        }
        return  json_encode($reTEngineArr);
    }
-
    public function actionLockertracker(){
         $user=base64_decode($_GET['user']);
         $locker=base64_decode($_GET['locker']);

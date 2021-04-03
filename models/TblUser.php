@@ -82,6 +82,12 @@ class TblUser extends  \yii\db\ActiveRecord
           //  $_SESSION['channelid']=$DeviceModel->channel_id;
             $statusarray['flag']="S";
             $statusarray['msg']="login successfully";
+            if($_SESSION['usertype'] =='A'){
+                $statusarray['action']="lockerusers";
+            }else{
+                $statusarray['action']="index";
+            }
+
         }else{
             $statusarray['flag']="E";
             $statusarray['msg']="Incorrect username and password";

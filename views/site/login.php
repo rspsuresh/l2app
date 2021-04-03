@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <title>AI Login</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
@@ -54,7 +54,7 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" autofocus="" aria-required="true">
                 </div>
             </div>
-               <div id="incorrect" class="error" style="display: none"><p class="text-center" >Incorrect Username and Password</p></div>
+               <div id="incorrect" class="error" style="display: none"><p class="text-center" style="color: red">Incorrect Username and Password</p></div>
             <div class="row">
                 <div class="col-xs-offset-8 col-xs-4">
          <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
@@ -109,7 +109,7 @@
                     success: function (result) {
                         var obj = JSON.parse(result);
                         if (obj.flag === "S") {
-                            window.location.href="<?=Yii::$app->urlManager->createUrl(['locker/index'])?>";
+                            window.location.href="<?=Yii::$app->urlManager->createUrl(['locker'])?>/"+obj.action;
                         }else{
 
                             $("#incorrect").show();
