@@ -19,12 +19,12 @@ class LockerController extends \yii\web\Controller
         if (!isset($_SESSION['username']) && !\Yii::$app->request->isAjax) {
             \Yii::$app->getResponse()->redirect(\Yii::$app->getUser()->loginUrl);
         }else{
-            $listArr=$_SESSION['usertype']=="A"?$adminAction:$UserAction;
-            if(in_array(\Yii::$app->controller->action->id,$listArr)){
+//            $listArr=$_SESSION['usertype']=="A"?$adminAction:$UserAction;
+//            if(in_array(\Yii::$app->controller->action->id,$listArr)){
                 return parent::beforeAction($action);
-            }else{
-                \Yii::$app->getResponse()->redirect(\Yii::$app->getUser()->loginUrl);
-            }
+//            }else{
+//                \Yii::$app->getResponse()->redirect(\Yii::$app->getUser()->loginUrl);
+//            }
         }
     }
     public function actionIndex()
@@ -38,8 +38,6 @@ class LockerController extends \yii\web\Controller
             'api_key' => '138435171694115',
             'api_secret' => 'ZUpVJ3PPWazj4hO3NDm7pyKXM4o',
         ));
-
-        $model=new Authimg();
         if(isset(\Yii::$app->request->isPost) && $_FILES){
             $file=basename($_FILES["file"]["name"]);
             $publicId=$_SESSION['userid']."_".md5($file);
@@ -97,8 +95,9 @@ class LockerController extends \yii\web\Controller
     public function actionLockerusers(){
 
         $userModel=TblUser::find()->select(['A.locker_channel_api','A.locker_channel_id','tbl_user.*'])->
-            leftJoin('locker_master as A','locker_id=A.id')->
-        where('user_type="U"')->asArray()->all();
+            leftJoin('locker_master as A','locker_id=A.id')
+            ->where('user_type="U"')
+            ->asArray()->all();
 //echo "<pre>";print_r($userModel);die;
         return $this->render('listlockers',['usermodel'=>$userModel]);
     }
